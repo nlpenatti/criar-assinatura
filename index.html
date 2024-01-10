@@ -9,9 +9,12 @@
   <title>Gerador de Assinatura - Zendesk</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:ital,wght@0,200;0,300;0,400;0,600;1,300&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,900;1,100&display=swap');
+      
 
 * {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -47,13 +50,16 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif, sans-serif;
-      margin: 3vw;
-      background-color: #292933;
+        font-family: Arial, Helvetica, sans-serif, sans-serif;
+        margin: 3vw;
+        background-color: #292933;
+        max-width: 1200px; /* Ajuste este valor conforme necessário */
+        margin: 0 auto; /* Isso centraliza o conteúdo na página */
+      }
       
-    }
 
     h1 {
+      margin-top: 20px;
       text-align: center;
       color: white;
       padding-bottom: 10px;
@@ -61,16 +67,16 @@
     }
 
     form {
-      max-width: 400px;
-      margin: 0 auto;
-      background-color: #202123;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      outline: none;
-    }
+        width: 100vh; /* Faça o formulário ocupar 100% da largura disponível */
+        max-width: 1200px; /* Defina uma largura máxima para o formulário se desejar */
+        margin: 0 auto; /* Centralize o formulário na página */
+        background-color: transparent; /* Remova a cor de fundo */
+        padding: 20px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        outline: none;
+      }
+      
 
     label {
       display: block;
@@ -102,7 +108,7 @@
     }
 
     #campoAdicional {
-      height: 80px;
+      height: 50px;
       position: relative;
       background-color: rgba(0, 0, 0, 0.5);
       outline: none;
@@ -192,11 +198,11 @@
 }
   
 footer {
-    background-color: 
+    background-color: #333; 
     padding: 80px; 
     text-align: center;
     font-size: 12px;
-    color: #9f9e9e;
+    color: #333;
 }
 
 
@@ -207,11 +213,13 @@ footer {
 .btn-copiar {
   background-color: rgb(28, 143, 237);
   transition: background-color 0.3s, color 0.3s;
+  border-radius: 30px;
 }
 
   .btn-limpar {
     background-color: rgb(28, 143, 237);
   transition: background-color 0.3s, color 0.3s;
+  border-radius: 30px;
   }
 
   .btn-limpar:hover {
@@ -237,13 +245,11 @@ footer {
     }
 
     .btn-gerar {
-    display: inline-flex;
-    margin-top: 10px;
-    padding: 8px 115px;
+    display: flex;
     background-color: rgb(28, 143, 237);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 30px;
     cursor: pointer;
     margin-bottom: 10px;
     white-space: nowrap;
@@ -253,11 +259,13 @@ footer {
   }
 
   .btn-gerar:hover {
-    background-color: rgb(15, 209, 77) /* Nova cor de fundo ao passar o mouse */
+    background-color: rgb(15, 209, 77) /* Nova cor de fundo ao passar o mouse */;
+    border-radius: 30px;
 }
 
 .btn-gerar:active {
-  background-color: rgb(28, 143, 237) /* Nova cor de fundo ao clicar */
+  background-color: rgb(28, 143, 237); /* Nova cor de fundo ao clicar */
+  border-radius: 30px;
 }
     
     @media (max-width: 480px) {
@@ -311,11 +319,56 @@ body::-webkit-scrollbar-thumb:hover {
     left: 1450px;
 }
 
-  </style>
+input[type="checkbox"] {
+    display: none; /* Esconde a aparência padrão do checkbox */
+  }
   
-  <button onclick="voltarPagina()" title="botão" style="position: absolute; top: 20px; left: 20px; color: white; background-color: transparent; font-size: 30px;">
-    <i class='bx bxs-chevrons-left bx-burst' style='color:#20d3c1'  ></i>
-</button>
+  input[type="checkbox"] {
+    margin-bottom: 10px; /* Adiciona espaçamento entre os checkboxes */
+  }
+
+ /* Estilo para a aparência personalizada dos checkboxes */
+input[type="checkbox"] + label {
+    position: relative;
+    padding: 25px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  input[type="checkbox"] + label:before {
+    content: ''; /* Removendo o conteúdo inicial */
+    font-size: 20px;
+    color: #fff;
+    position: absolute;
+    top: 0%; 
+    width: 16px;
+    height: 16px;
+    border: 1px solid #20d3c1;
+    border-radius: 2px;
+    background-color: #292933;
+    text-align: center;
+    line-height: 16px;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  input[type="checkbox"]:checked + label:before {
+    content: '\2714'; /* Unicode para o símbolo de marca de seleção (✔) */
+    background-color: #20d3c1;
+    border-color: #20d3c1;
+    color: #292933;
+  }
+
+  hr {
+    background-color: #333;
+    height: 0.5px;
+    border: 0;
+    margin: -10px 0;
+  }
+
+  
+  </style>
+
   
 </head>
 <body>
@@ -324,7 +377,7 @@ body::-webkit-scrollbar-thumb:hover {
    
 
   <form>
-    <label for="cargo" class="palavrastitulo"><i class="fas fa-user icon"></i>Informe seu líder</label>
+    <label for="cargo" class="palavrastitulo"><i class="fas fa-user icon"></i>Líder</label><div style="color: #8d8888; font-size: 12px; margin: -5px; margin-left: 5px; padding-bottom: 20px ;">Selecione o seu líder direto</div>
     <select id="cargo" onchange="mostrarCampoOutro()">
       <option value="" disabled selected hidden>Líderes</option>
       <option value="Rolf Guenze">Rolf Guenze</option>
@@ -333,22 +386,72 @@ body::-webkit-scrollbar-thumb:hover {
       <option value="Paulo Basile">Paulo Basile</option>
       <option value="OUTRO" class="palavrastitulo" style="color: rgb(255, 145, 0); font-weight: bold;">Outros setores (clique aqui)</option>
     </select>
+    <br><br><hr>
+    
+    
+    <div id="campoOutro" style="display: none;">
+      <label for="outroLider" class="palavrastitulo"><i class="fas fa-user icon"></i>Cargo e Nome</label><div style="color: #8d8888; font-size: 12px; margin: -5px; margin-left: 5px; padding-bottom: 20px ;">Informe o cargo e o seu nome</div>
+      <input type="text" id="outroLider" placeholder="Exemplo: Líder João">
+      <br><br><hr>
+      <label for="outroTelefone" class="palavrastitulo"><i class="fas fa-phone"></i> Telefone</label><div style="color: #8d8888; font-size: 12px; margin: -5px; margin-left: 5px; padding-bottom: 20px ;">Informe seu telefone para contato</div>
+      <input type="text" id="outroTelefone" placeholder="Exemplo: (16) 9 1234-5678">
+      <br><br><hr>
+    </div>
+
 
 
     
-    <div id="campoOutro" style="display: none;">
-      <label for="outroLider" class="palavrastitulo"><i class="fas fa-user icon"></i>Cargo e Nome</label>
-      <input type="text" id="outroLider" placeholder="Exemplo: Líder João">
-      <label for="outroTelefone" class="palavrastitulo"><i class="fas fa-phone"></i>Telefone</label>
-      <input type="text" id="outroTelefone" placeholder="Exemplo: (16) 9 1234-5678">
-    </div>
-
-    <label for="campoAdicional" class="palavrastitulo"><i class="fas fa-map icon"></i>Área e Linha</label>
+    <label for="campoAdicional" class="palavrastitulo"><i class="fas fa-map icon"></i>Escolha seu setor</label><div style="color: #8d8888; font-size: 12px; margin: -5px; margin-left: 5px; padding-bottom: 20px ;">Selecione o checkbox, se necessário, personalize </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <div  >
+          <input type="checkbox" id="checkbox-edocs" onchange="preencherAreaLinha(this)">
+          <label for="checkbox-edocs" style="color: white; font-size: 12px; padding: 20px"">eDocs</label>
+        </div>
+      
+        <div>
+          <input type="checkbox" id="checkbox-financeiro" onchange="preencherAreaLinha(this)">
+          <label for="checkbox-financeiro" style="color: white; font-size: 12px; padding: 20px"">Financeiro</label>
+        </div>
+      
+        <div>
+          <input type="checkbox" id="checkbox-wms" onchange="preencherAreaLinha(this)">
+          <label for="checkbox-wms" style="color: white; font-size: 12px; padding: 20px"">WMS</label>
+        </div>
+      
+        <div>
+          <input type="checkbox" id="checkbox-fiscal" onchange="preencherAreaLinha(this)">
+          <label for="checkbox-fiscal"style="color: white; font-size: 12px; padding: 20px" padding: 20px" padding: 20px" >Fiscal</label>
+        </div>
+      
+        <div>
+          <input type="checkbox" id="checkbox-contabil" onchange="preencherAreaLinha(this)">
+          <label for="checkbox-contabil" style="color: white; font-size: 12px; padding: 20px" padding: 20px"" >Contábil</label>
+        </div>
+      
+        <div>
+          <input type="checkbox" id="checkbox-vendas" onchange="preencherAreaLinha(this)">
+          <label for="checkbox-vendas" style="color: white; font-size: 12px; padding: 20px" >Vendas</label>
+        </div>
+      
+        <div>
+          <input type="checkbox" id="checkbox-pdv" onchange="preencherAreaLinha(this)">
+          <label for="checkbox-pdv" style="color: white; font-size: 12px; padding: 20px"">PDV</label>
+        </div>
+        <!-- Adicione mais checkboxes conforme necessário -->
+      </div>
 
       <div style="position: relative;">
       <textarea id="campoAdicional" maxlength="100" oninput="contarCaracteres(this)" placeholder="Seu setor | Varejo Supermercados, Linha Consinco"></textarea>
       <span id="contadorCaracteres" style="background-color: transparent; color: rgb(158, 151, 151); font-size: 13px; font-family: 'Arial';">0/100</span>
     </div>
+
+
+      
+<br><hr>
+<!-- Adicione este trecho no seu formulário -->
+<label for="informacaoAdicional" class="palavrastitulo"><i class="fas fa-info-circle icon"></i>Informação Adicional</label>
+<textarea id="informacaoAdicional" maxlength="1000" oninput="contarCaracteres(this)" placeholder="Adicione informações adicionais aqui"></textarea>
+
 
     <button class= "btn-gerar" type="button" onclick="gerarAssinatura()">Gerar Assinatura</button>  
 
@@ -372,74 +475,110 @@ body::-webkit-scrollbar-thumb:hover {
 
 
   <script>
-  function gerarAssinatura() {
-  var cargo = document.getElementById("cargo").value;
-  var currentUserName = "{{current_user.name}}";
-  var currentUserPhone = "{{current_user.phone}}";
-  var leaderInfo = '';
-  var mensagemErro = document.getElementById("mensagemErro");
-
-  mensagemErro.textContent = ""; // Limpa a mensagem de erro
-
-  if (cargo === "") {
-    mensagemErro.textContent = "Não foi selecionada nenhuma informação para gerar assinatura";
-    mensagemErro.style.display = "block";
-
-    setTimeout(function () {
-      mensagemErro.style.display = "none";
-    }, 1000); // Oculta a mensagem após 1 segundo
-
-    return; // Retorna se nenhuma informação foi selecionada
-  }
-
-  if (cargo === "Rolf Guenze") {
-    leaderInfo =
-      'Líder [Rolf Guenze](rolf.guenze@totvs.com.br) - [(16) 9 92975421![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516992975421)';
-  } else if (cargo === "Hebert Pedersoli") {
-    leaderInfo =
-      'Líder [Hebert Pedersoli](hebert.pedersoli@totvs.com.br) - [(16) 9 9401-2783![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516994012783)';
-  } else if (cargo === "Roberto Palacio") {
-    leaderInfo =
-      'Líder [Roberto Palacio](roberto.palacio@totvs.com.br) - [(16) 9 9296-5449![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516992965449)';
-  } else if (cargo === "Larissa Curbage") {
-    leaderInfo =
-      'Líder [Larissa Curbage](larissa.curbage@totvs.com.br)  -  [(16) 9 9198-0510![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516991980510)';
-    } else if (cargo === "Paulo Basile") {
-    leaderInfo =
-      'Líder [Paulo Basile](paulo.basile@totvs.com.br)  -  [(16) 9 9296-6529![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516992966529)';
-  } else if (cargo === "OUTRO") {
-    var outroLider = document.getElementById("outroLider").value.trim();
-    var outroTelefone = document.getElementById("outroTelefone").value.trim();
-
-    if (outroLider !== "") {
-      leaderInfo = '' + outroLider;
-
-      if (outroTelefone !== "") {
-        leaderInfo += ' - ' + formatarTelefone(outroTelefone);
-      }
-    } else {
-      leaderInfo = 'Sem informações';
+    function preencherAreaLinha(checkbox) {
+        var areaLinha = document.getElementById("campoAdicional");
+    
+        // Desmarcar as outras checkboxes
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(function (cb) {
+            if (cb !== checkbox) {
+                cb.checked = false;
+            }
+        });
+    
+        // Frases conforme necessário para cada checkbox
+        var frases = {
+            'checkbox-edocs': "Documentos Eletrônicos | Varejo Supermercados, Linha Consinco",
+            'checkbox-financeiro': "Financeiro | Varejo Supermercados, Linha Consinco",
+            'checkbox-wms': "WMS | Varejo Supermercados, Linha Consinco",
+            'checkbox-fiscal': "Fiscal | Varejo Supermercados, Linha Consinco",
+            'checkbox-contabil': "Contábil | Varejo Supermercados, Linha Consinco",
+            'checkbox-vendas': "Vendas | Varejo Supermercados, Linha Consinco",
+            'checkbox-pdv': "PDV | Varejo Supermercados, Linha Consinco",
+            // Adicione mais conforme necessário
+        };
+    
+        // Obtém a frase correspondente ao checkbox
+        var frase = frases[checkbox.id];
+    
+        if (checkbox.checked) {
+            areaLinha.value = frase || ""; // Usa a frase correspondente ou uma string vazia
+        } else {
+            areaLinha.value = ""; // Limpa o campo se desmarcar
+        }
+    
+        contarCaracteres(areaLinha); // Atualiza o contador de caracteres
     }
-  }
-
-  var campoAdicional = document.getElementById("campoAdicional").value.trim();
-  var assinaturaSupermercados = ""; // Definir inicialmente como uma string vazia
-
-  if (cargo !== "OUTRO") {
-    // Incluir a assinatura supermercados apenas se não for "OUTRO"
-    assinaturaSupermercados = "{{dc.assinatura_supermercados}}";
-  }
-
-  var quebraDeLinha = '\n';
-
-  var assinatura = '[![TOTVS](https://totvs.com/assinatura/11-assinatura-email-logo-totvs.gif)](https://totvs.com)![](https://totvs.com/assinatura/10-assinatura-email-grafismo.gif) ' +
-    currentUserName + ' - ' + currentUserPhone + quebraDeLinha +
-    leaderInfo + quebraDeLinha +
-    campoAdicional + quebraDeLinha +
-    assinaturaSupermercados;
-
-  document.getElementById("resultado").value = assinatura;
-}
+    
+    function gerarAssinatura() {
+        var cargo = document.getElementById("cargo").value;
+        var currentUserName = "{{current_user.name}}";
+        var currentUserPhone = "{{current_user.phone}}";
+        var leaderInfo = '';
+        var mensagemErro = document.getElementById("mensagemErro");
+    
+        mensagemErro.textContent = ""; // Limpa a mensagem de erro
+    
+        if (cargo === "") {
+            mensagemErro.textContent = "Não foi selecionada nenhuma informação para gerar assinatura";
+            mensagemErro.style.display = "block";
+            setTimeout(function () {
+                mensagemErro.style.display = "none";
+            }, 1000); // Oculta a mensagem após 1 segundo
+            return; // Retorna se nenhuma informação foi selecionada
+        }
+    
+        if (cargo === "Rolf Guenze") {
+            leaderInfo =
+                'Líder [Rolf Guenze](rolf.guenze@totvs.com.br) - [(16) 9 92975421![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516992975421)';
+        } else if (cargo === "Hebert Pedersoli") {
+            leaderInfo =
+                'Líder [Hebert Pedersoli](hebert.pedersoli@totvs.com.br) - [(16) 9 9401-2783![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516994012783)';
+        } else if (cargo === "Roberto Palacio") {
+            leaderInfo =
+                'Líder [Roberto Palacio](roberto.palacio@totvs.com.br) - [(16) 9 9296-5449![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516992965449)';
+        } else if (cargo === "Larissa Curbage") {
+            leaderInfo =
+                'Líder [Larissa Curbage](larissa.curbage@totvs.com.br)  -  [(16) 9 9198-0510![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516991980510)';
+        } else if (cargo === "Paulo Basile") {
+            leaderInfo =
+                'Líder [Paulo Basile](paulo.basile@totvs.com.br)  -  [(16) 9 9296-6529![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516992966529)';
+        } else if (cargo === "OUTRO") {
+            var outroLider = document.getElementById("outroLider").value.trim();
+            var outroTelefone = document.getElementById("outroTelefone").value.trim();
+    
+            if (outroLider !== "") {
+                leaderInfo = '' + outroLider;
+    
+                if (outroTelefone !== "") {
+                    leaderInfo += ' - ' + formatarTelefone(outroTelefone);
+                }
+            } else {
+                leaderInfo = 'Sem informações';
+            }
+        }
+    
+        var campoAdicional = document.getElementById("campoAdicional").value.trim();
+        var assinaturaSupermercados = "";
+    
+        if (cargo !== "OUTRO") {
+            assinaturaSupermercados = "{{dc.assinatura_supermercados}}";
+        }
+    
+        var quebraDeLinha = '\n';
+    
+        var informacaoAdicional = document.getElementById("informacaoAdicional").value.trim();
+    
+        var assinatura = '[![TOTVS](https://totvs.com/assinatura/11-assinatura-email-logo-totvs.gif)](https://totvs.com)![](https://totvs.com/assinatura/10-assinatura-email-grafismo.gif) ' +
+            currentUserName + ' - ' + currentUserPhone + quebraDeLinha +
+            leaderInfo + quebraDeLinha +
+            campoAdicional + quebraDeLinha +
+            assinaturaSupermercados + quebraDeLinha + quebraDeLinha + informacaoAdicional;
+    
+        document.getElementById("resultado").value = assinatura;
+    }
+    
+    
 
 
     function mostrarCampoOutro() {
