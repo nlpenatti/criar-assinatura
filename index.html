@@ -41,7 +41,7 @@ body {
 
 .form-container {
     flex: 1; /* Ocupa o espaço restante */
-    padding: 30px;
+    padding: 35px;
     max-width: 600px; /* Reduzi a largura máxima do formulário */
     max-height: 477px;
     background: #f2f2f2;
@@ -55,18 +55,15 @@ body {
 }
 
 img {
-    width: 100%;
-    max-width: 477px;
-    height: auto;
-    border-radius: 20px 0px 0px 20px;
+  width: 100%;
+  max-width: 476px;
+  height: auto;
+  border-radius: 20px 0px 0px 20px;
+  object-fit: cover;
 }
 
-
-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    max-height: 100%;
+.informe-lider-container {
+  text-align: left;
 }
 
 .palavrastitulo {
@@ -120,6 +117,8 @@ select {
 }
 
 
+
+
   #campoAdicional {
     height: 25px;
     position: relative;
@@ -129,7 +128,14 @@ select {
     border-bottom: 1px solid black;
 }
 
-  input[type="text"] {
+::placeholder {
+  color: #a5a4a4; /* Cor do texto do placeholder */
+  font-size: 14px; /* Tamanho da fonte do placeholder */
+  font-style: italic; /* Estilo da fonte do placeholder */
+}
+
+
+  input[type="text"]::placeholder {
     border: 1px solid;
     border-radius: 0px;
     background-color: #333;
@@ -142,6 +148,7 @@ textarea {
     background-color: transparent;
     color: 333;
     outline: none;
+    width: 50%;
 }
 
 input[type="text"], textarea, select {
@@ -217,7 +224,7 @@ footer {
 
 .btn-gerar:hover {
     background-color: rgb(15, 209, 77);
-    border-radius: 2px;
+    border-radius: 15px;
 }
 
 .btn-gerar:active {
@@ -225,19 +232,44 @@ footer {
     border-radius: 20px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 700px) {
+
+  *{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 0 auto;
+    margin: 0 auto;
+  }
+
+  body {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+
     .btn-gerar {
         display: inline-flex;
         padding: 8px 98px;
-        background-color: rgb(28, 143, 237);
-        color: black;
+        background-color: rgb(49, 15, 78);
+        color: white;
         border: none;
-        border-radius: 4px;
+        border-radius: 15px;
         cursor: pointer;
-        margin-bottom: 10px;
-        white-space: nowrap;
-        transition: background-color 0.3s, color 0.3s;
+        transition: background-color 0.5s, color 0.3s;
     }
+
+    img {
+      width: auto;
+      height: auto;
+      border-radius: 20px 0px 0px 20px;
+      display: none;
+  }
+
+
+  .btn-copiar, .btn-limpar {
+    border-radius: 10px;
+  }
 }
 
 body::-webkit-scrollbar {
@@ -260,6 +292,33 @@ body::-webkit-scrollbar-thumb:hover {
 input[type="text"] {
     border-bottom: 1px solid;
     background-color: transparent;
+    width: 50%;
+}
+
+#outroLider::placeholder {
+  color: rgb(158, 151, 151);
+  background-color: transparent; 
+  border: none; /* Cor desejada para o placeholder, ajuste conforme necessário */
+  font-size: 12px; /* Tamanho da fonte do placeholder, ajuste conforme necessário */
+  font-style: italic; /* Estilo da fonte do placeholder, ajuste conforme necessário */
+}
+
+#outroTelefone::placeholder {
+  color: rgb(158, 151, 151);
+  background-color: transparent; 
+  border: none; /* Cor desejada para o placeholder, ajuste conforme necessário */
+  font-size: 12px; /* Tamanho da fonte do placeholder, ajuste conforme necessário */
+  font-style: italic; /* Estilo da fonte do placeholder, ajuste conforme necessário */
+}
+
+label[for="cargo"] {
+  display: inline-block;
+  margin-bottom: 10px; /* Ajuste conforme necessário */
+}
+
+#copiar,
+.btn-limpar {
+    display: none;
 }
 
 
@@ -272,31 +331,29 @@ input[type="text"] {
     <img src="TOTVS2.png" alt="Logo">
     <form class="form-container"> <!-- Adicionei a classe form-container aqui -->
 
-  <form>
-  
-    
-    <label for="cargo" class="palavrastitulo"><i class='bx bxs-user' style='color:#660e87' ></i> Informe seu Líder</label>
-    <select id="cargo" class="palavrastitulo" onchange="mostrarCampoOutro()">
-      <option value="" disabled selected hidden>Selecione...</option>
-      <option value="Rolf Guenze">Rolf Guenze</option>
-      <option value="Hebert Pedersoli">Hebert Pedersoli</option>
-      <option value="Larissa Curbage">Larissa Curbage</option>
-      <option value="Paulo Basile">Paulo Basile</option>
-      <option value="OUTRO" class="palavrastitulo" style="color: rgb(255, 145, 0); font-weight: bold;">Outros setores (clique aqui)</option>
-    </select>
-    
-    
-    <div id="campoOutro" style="display: none;">
-      <label for="outroLider" class="palavrastitulo">Cargo e Nome</label>
-      <input type="text" id="outroLider" placeholder="Exemplo: Líder João">
-      <label for="outroTelefone" class="palavrastitulo"> Telefone</label>
-      <input type="text" id="outroTelefone" placeholder="Exemplo: (16) 9 1234-5678">
-    </div>
+      <div class="informe-lider-container">
+        <label for="cargo" class="palavrastitulo"><i class='bx bxs-user' style='color:#660e87' ></i> Informe seu Líder:</label>
+        <select id="cargo" class="palavrastitulo" onchange="mostrarCampoOutro()">
+            <option value="" disabled selected hidden>Selecione...</option>
+            <option value="Rolf Guenze">Rolf Guenze</option>
+            <option value="Hebert Pedersoli">Hebert Pedersoli</option>
+            <option value="Larissa Curbage">Larissa Curbage</option>
+            <option value="Paulo Basile">Paulo Basile</option>
+            <option value="OUTRO" class="palavrastitulo" style="color: rgb(3, 3, 3); font-weight: bold;">Outros setores...</option>
+</select>
+
+<div id="campoOutro" style="display: none;">
+  <label for="outroLider" class="palavrastitulo"><i class='bx bx-id-card' style='color:#883bb3'  ></i> Cargo e Nome</label>
+  <input type="text" id="outroLider" placeholder="Exemplo: Líder João">
+  <br>
+  <label for="outroTelefone" class="palavrastitulo"><i class='bx bxs-phone-call' style='color:#883bb3' ></i> Telefone</label>
+  <input type="text" id="outroTelefone" placeholder="Exemplo: (16) 9 1234-5678">
+</div>
 
 
 
     <br>
-    <label for="campoAdicional" class="palavrastitulo"><i class='bx bx-map-alt' style='color:#660e87' ></i> Marque seu setor</label><br>
+    <label for="campoAdicional" class="palavrastitulo"><i class='bx bx-map-alt' style='color:#660e87' id="setor" ></i> Marque seu setor</label><br><br>
     <div style="display: flex; flex-wrap: wrap; gap: 10px;">
       <div>
           <input type="checkbox" id="checkbox-edocs" onchange="preencherAreaLinha(this)">
@@ -335,7 +392,7 @@ input[type="text"] {
       </div>
 
       <div>
-      <textarea id="campoAdicional" maxlength="100" oninput="contarCaracteres(this)" placeholder="Seu setor | Varejo Supermercados, Linha Consinco"></textarea>
+      <textarea id="campoAdicional" maxlength="100" oninput="contarCaracteres(this)" placeholder="Clique na checkbox ou escreva seu setor"></textarea>
       <span id="contadorCaracteres" style="background-color: transparent; color: rgb(158, 151, 151); font-size: 13px; font-family: 'Arial';">0/100</span>
     </div>
 
@@ -352,12 +409,14 @@ input[type="text"] {
 
 <div class="botoes">
   <button id="copiar" type="button" onclick="copiarAssinatura()" class="btn-copiar"><i class='bx bxs-copy-alt' style='color:#ffffff'></i> Copiar</button>
-  <button type="button" onclick="limparCampos()" class="btn-limpar"><i class='bx bxs-eraser' style='color:#ffffff' ></i> Limpar</button>
-</div>
+  <button id="limpar" type="button" onclick="limparCampos()" class="btn-limpar"><i class='bx bxs-eraser' style='color:#ffffff' ></i> Limpar</button>
+  
   </form>
 
 
   <script>
+
+    
     function preencherAreaLinha(checkbox) {
         var areaLinha = document.getElementById("campoAdicional");
     
@@ -459,21 +518,61 @@ input[type="text"] {
             assinaturaSupermercados + quebraDeLinha + quebraDeLinha + informacaoAdicional;
     
         document.getElementById("resultado").value = assinatura;
+         // Mostrar os botões após gerar a assinatura
+    document.getElementById("copiar").style.display = "inline-block";
+    document.getElementById("limpar").style.display = "inline-block";
     }
     
     
-
-
     function mostrarCampoOutro() {
       var cargo = document.getElementById("cargo").value;
       var campoOutro = document.getElementById("campoOutro");
-
+      var campoAdicional = document.getElementById("campoAdicional");
+    
       if (cargo === "OUTRO") {
+        // Torna o campoOutro visível
         campoOutro.style.display = "block";
+    
+        // Adiciona a classe para ocultar os <br>
+        document.querySelectorAll('.hide-br').forEach(function (br) {
+          br.style.display = "none";
+        });
+    
+        // Remove as checkboxes e labels relacionados
+        var checkboxesLabels = document.querySelectorAll('input[type="checkbox"] + label');
+        checkboxesLabels.forEach(function (checkboxLabel) {
+          checkboxLabel.style.display = "none";
+        });
+    
+        // Ajusta a posição do campoAdicional
+        campoAdicional.style.marginTop = "-25px"; // Ajuste o valor conforme necessário
+      
+    
       } else {
+        // Torna o campoOutro invisível
         campoOutro.style.display = "none";
+    
+        // Remove a classe para exibir os <br>
+        document.querySelectorAll('.hide-br').forEach(function (br) {
+          br.style.display = "block";
+        });
+    
+        // Exibe novamente as checkboxes e labels
+        var checkboxesLabels = document.querySelectorAll('input[type="checkbox"] + label');
+        checkboxesLabels.forEach(function (checkboxLabel) {
+          checkboxLabel.style.display = "flex"; // Ou o valor desejado para exibir novamente
+        });
+    
+        // Reseta a margem do campoAdicional para o valor padrão
+        campoAdicional.style.marginTop = "5px"; // Ajuste o valor conforme necessário
+    
       }
     }
+    
+    
+
+    
+    
 
     function contarCaracteres(textarea) {
       var contador = document.getElementById("contadorCaracteres");
